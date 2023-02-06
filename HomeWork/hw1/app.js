@@ -1,2 +1,2 @@
-const askName = prompt('Введите ваше имя');
+const askName = prompt('What is your name?');
 alert(`Hello, ${askName}! How are you?`);
