@@ -8,7 +8,7 @@ numberOne = Number(numberOne);
 
 do {
     chooseOperand = prompt('Введите действие: +, -, * или /');
-} while (isSymvol(chooseOperand));
+} while (isNotMathSymbol(chooseOperand));
 
 do {
     numberTwo = prompt('Введите второе число');
@@ -29,12 +29,16 @@ function isInvalid(str) {
     return str === null || str.trim() === '' || isNaN(str);
 }
 
-function isSymvol(str) {
-    switch(str) {
-        case '+': return false;
-        case '-': return false;
-        case '*': return false;
-        case '/': return false;
-        default: return true;
-    }
+// function isNotMathSymbol(str) {
+//     switch(str) {
+//         case '+': return false;
+//         case '-': return false;
+//         case '*': return false;
+//         case '/': return false;
+//         default: return true;
+//     }
+// }
+
+function isNotMathSymbol(str) {
+    return !['+', '-', '*', '/'].includes(str);
 }
