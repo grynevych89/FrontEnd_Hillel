@@ -1,44 +1,26 @@
-let numberOne, numberTwo, chooseOperand, result;
+let numOrStr = prompt('input number or string');
 
-do {
-    numberOne = prompt('Введите первое число');
-} while (isInvalid(numberOne));
+switch (numOrStr) {
+    case null:
+      console.log('ви скасували');
+      break;
+    case '':
+      console.log('Empty String');
+      break;
+    case !isNaN(+numOrStr) || numOrStr:
+      console.log('number is Ba_NaN');
+      break;
+    default:
+      console.log("OK!");
+  }
+console.log(numOrStr)
 
-numberOne = Number(numberOne);
-
-do {
-    chooseOperand = prompt('Введите действие: +, -, * или /');
-} while (isNotMathSymbol(chooseOperand));
-
-do {
-    numberTwo = prompt('Введите второе число');
-} while (isInvalid(numberTwo));
-
-numberTwo = Number(numberTwo);
-
-switch (chooseOperand) {
-    case '+' : result = numberOne + numberTwo; break;
-    case '-' : result = numberOne - numberTwo; break;
-    case '*' : result = numberOne * numberTwo; break;
-    case '/' : result = numberOne / numberTwo; break;
-}
-
-alert(numberOne + ' ' + chooseOperand + ' ' + numberTwo + ' = ' + result);
-
-function isInvalid(str) {
-    return str === null || str.trim() === '' || isNaN(str);
-}
-
-// function isNotMathSymbol(str) {
-//     switch(str) {
-//         case '+': return false;
-//         case '-': return false;
-//         case '*': return false;
-//         case '/': return false;
-//         default: return true;
-//     }
+// if(numOrStr === null) {
+// console.log('ви скасували')
+// } else if( numOrStr.trim() === '' ) {
+// console.log('Empty String');
+// } else if ( isNaN( +numOrStr ) ) {
+// console.log(' number is Ba_NaN')
+// } else {
+// console.log('OK!')
 // }
-
-function isNotMathSymbol(str) {
-    return !['+', '-', '*', '/'].includes(str);
-}
