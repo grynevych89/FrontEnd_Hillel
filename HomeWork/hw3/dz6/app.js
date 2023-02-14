@@ -8,12 +8,12 @@ if (askBirthYear == null) {
 }
 
 askCity = prompt('Введіть місто в якому ви мешкаєте?');
-askCity = isCity(askCity);
+askCity = getDescriptionByCity(askCity);
 
 askFavoriteSport = prompt('Який ваш улюбленний вид спорту?');
-askFavoriteSport = isFavorite(askFavoriteSport);
+askFavoriteSport = getDescriptionByFavoriteSport(askFavoriteSport);
 
-function isCity(str) {
+function getDescriptionByCity(str) {
     switch(str) {
         case 'Київ': return 'Ти живеш в Україні, столицею якої є місто Київ';
         case 'Вашингтон': return 'Ти живеш в США, столицею якої є місто Вашингтон';
@@ -23,7 +23,7 @@ function isCity(str) {
     }
 }
 
-function isFavorite(str) {
+function getDescriptionByFavoriteSport(str) {
     switch(str) {
         case 'Бокс': return 'Ти ввів "Бокс". Круто! Хочешь стати як Усік?';
         case 'Дота2': return 'Ти ввів "Дота2". Круто! Хочешь до команди "Team Spirit"?';
