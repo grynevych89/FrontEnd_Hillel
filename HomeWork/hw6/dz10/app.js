@@ -54,3 +54,19 @@ let users = [
     "address": "314 Dunne Place, Bawcomville, Guam, 9053"
     }
 ]
+
+users.forEach(val => val.balance = +val.balance.replace('$', '').replace(',', ''));
+
+let arrPhoneNumbersOfUsers = users
+                        .filter(val => val.balance > 2000)
+                        .map(item => item.phone);
+console.log('Массив телефонов пользователей с балансом больше 2000');
+console.log(arrPhoneNumbersOfUsers);
+
+
+let balansesOfUsers = users
+                        .map(val => val.balance)
+                        .reduce((acc, val) => acc + val);
+                        // .toLocaleString('de-DE');
+balansesOfUsers = new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'USD' }).format(balansesOfUsers);
+console.log(`Сумма балансов всех пользователей: ${balansesOfUsers}`);
