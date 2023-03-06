@@ -14,19 +14,20 @@ const shoppingCart = {
     },
     deleteItem(itemName) {
         const indexToDelete = this.items.findIndex(item => item.name.toLowerCase() === itemName.toLowerCase());
-        indexToDelete !== (-1) ? this.items.splice(indexToDelete, 1) :
+        indexToDelete !== -1 ? this.items.splice(indexToDelete, 1) :
             console.log(`Такого товара "${itemName}" нет в корзине`);
     },
     getTotalSum(){
-        return this.items.map(item => item.count * item.price).reduce((accum, currentValue) => accum + currentValue);
+        // return this.items.map(item => item.count * item.price).reduce((accum, currentValue) => accum + currentValue);
+        return this.items.reduce((sum, current) => sum + current.count * current.price, 0);
     },
-    getAllItems(){
+    showAllItems(){
         console.log(this.items)
     },
 };
 
 console.log('>> Проверяем изначальную корзину')
-shoppingCart.getAllItems();
+shoppingCart.showAllItems();
 console.log(' ')
 console.log(' ')
 
@@ -46,7 +47,7 @@ const addNewItem2 = {
 }
 shoppingCart.addItem(addNewItem2);
 
-shoppingCart.getAllItems();
+shoppingCart.showAllItems();
 console.log(`>> Общая стоимость товаров: ${shoppingCart.getTotalSum().toLocaleString('de-DE')} $`);
 console.log(' ')
 console.log(' ')
@@ -54,5 +55,5 @@ console.log(' ')
 // Удалим один товар
 shoppingCart.deleteItem("tv");
 console.log('>> Удалили телики из корзины')
-shoppingCart.getAllItems(); // Проверяем корзину после добавления/удаления товаров
+shoppingCart.showAllItems(); // Проверяем корзину после добавления/удаления товаров
 console.log(`>> Общая стоимость товаров: ${shoppingCart.getTotalSum().toLocaleString('de-DE')} $`);
