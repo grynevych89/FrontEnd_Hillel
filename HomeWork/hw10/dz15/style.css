@@ -1,0 +1,32 @@
+body {
+    text-align: center;
+    font: 13pt 'Trebuchet MS';
+    padding: 10px 10%;
+    color: blue;
+}
+
+.title {
+    font-size: 18pt;
+    margin-bottom: 20px;
+    text-decoration: underline darkgreen;
+    color: darkgreen;
+}
+
+.table100 {
+    width: auto;
+    margin: 10px auto;
+    border: 1px solid silver;
+}
+.table100 th,
+.table100 td {
+    padding: 10px;
+}
+.table100 tr, th, td {
+    text-align: center;
+    border: 1px solid silver;
+}
+.table100 th, td:hover {
+    color: #fff;
+    background: #0091bf;
+}
+
