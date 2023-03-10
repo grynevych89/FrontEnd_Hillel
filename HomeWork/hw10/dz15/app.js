@@ -4,7 +4,6 @@ const div = document.createElement('div');
 const h1 = document.createElement('h1');
 const table = document.createElement('table');
 
-h1.setAttribute('style', 'text-align: center')
 h1.innerHTML = 'Grynevych home works';
 h1.className = 'title';
 table.className = 'table100';
