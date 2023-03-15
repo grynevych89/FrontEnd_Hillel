@@ -19,12 +19,14 @@ createItem('Ноутбук', 'Техника', 40, 49999);
 createItem('Телевизор', 'Техника', 45, 19999);
 
 // Создаем категории и добавляем в них товары
-let categories = [];
-for (let i = 0; i < arrOfProducts.length; i++) {
-    if (!categories.includes(arrOfProducts[i].category)) {
-        categories.push(arrOfProducts[i].category)
-    } else continue;
-}
+// let categories = [];
+// for (let i = 0; i < arrOfProducts.length; i++) {
+//     if (!categories.includes(arrOfProducts[i].category)) {
+//         categories.push(arrOfProducts[i].category)
+//     }
+// }
+const categories = [...new Set(arrOfProducts.map((item) => item.category))]
+
 categories.forEach(item => {
     const categoryCell = document.createElement('li');
     categoryCell.className = 'cell';
