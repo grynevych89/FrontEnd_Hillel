@@ -8,6 +8,7 @@ const ulOrdersList = document.querySelector(".orders-list");
 const formAddCategory = document.forms.addNewCategory;
 const formAddProduct = document.forms.addNewProduct;
 const formAddOrder = document.forms.AddNewOrder;
+let modal = document.getElementById("orderModal");
 
 formAddCategory.addEventListener("submit", (e) => {
     e.preventDefault();
@@ -33,14 +34,13 @@ formAddProduct.addEventListener('submit', (e) => {
 
 formAddOrder.addEventListener('submit', (e) => {
     e.preventDefault();
-    const productTitle = formAddOrder.productTitle.textContent;
+    const productTitle = document.getElementById("productNameTitle").innerHTML;
     const fio = formAddOrder.fioNewOrder.value;
     const city = formAddOrder.cityNewOrder.value;
     const adressNp = formAddOrder.adressNpNewOrder.value;
     const choosedPayment = formAddOrder.choosedPaymentNewOrder.value;
     const count = formAddOrder.countNewOrder.value;
     const desc = formAddOrder.descNewOrder.value;
-    formAddOrder.productTitle.textContent = "";
     formAddOrder.fioNewOrder.value = "";
     formAddOrder.cityNewOrder.value = "";
     formAddOrder.adressNpNewOrder.value = "";
@@ -48,6 +48,7 @@ formAddOrder.addEventListener('submit', (e) => {
     formAddOrder.countNewOrder.value = "";
     formAddOrder.descNewOrder.value = "";
     dataOrdersList.addOrder(productTitle, fio, city, adressNp, choosedPayment, count, desc);
+    modal.style.display = "none";
     showOrderList(dataOrdersList.getOrders(), ulOrdersList);
 });
 
@@ -84,7 +85,7 @@ ulProductList.addEventListener('click', (e) => {
 
     if (target.tagName === 'BUTTON' && target.textContent === 'Buy') {
         const productId = target.dataset.id
-        let modal = document.getElementById("orderModal");
+
         let productNameEl = modal.querySelector(".product-name");
         let span = document.getElementsByClassName("close")[0];
         modal.style.display = "block";
@@ -101,6 +102,8 @@ ulProductList.addEventListener('click', (e) => {
         const product = data.getCategoryById(data.idCurrentCategory).find((item) => item.id === +productId);
         productNameEl.innerHTML = product.title;
     }
+
+
 
     ulProductList.innerHTML = '';
 
