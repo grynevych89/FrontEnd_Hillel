@@ -33,14 +33,14 @@ formAddProduct.addEventListener('submit', (e) => {
 
 formAddOrder.addEventListener('submit', (e) => {
     e.preventDefault();
-    const productTitle = formAddOrder.productTitle.value;
+    const productTitle = formAddOrder.productTitle.textContent;
     const fio = formAddOrder.fioNewOrder.value;
     const city = formAddOrder.cityNewOrder.value;
     const adressNp = formAddOrder.adressNpNewOrder.value;
     const choosedPayment = formAddOrder.choosedPaymentNewOrder.value;
     const count = formAddOrder.countNewOrder.value;
     const desc = formAddOrder.descNewOrder.value;
-    formAddOrder.productTitle.value = "";
+    formAddOrder.productTitle.textContent = "";
     formAddOrder.fioNewOrder.value = "";
     formAddOrder.cityNewOrder.value = "";
     formAddOrder.adressNpNewOrder.value = "";
