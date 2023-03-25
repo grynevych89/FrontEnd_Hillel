@@ -1,0 +1,191 @@
+html,
+body {
+    height: 100%;
+    width: 90%;
+    min-width: 360px;
+    background-color: darkslategrey;
+}
+
+body {
+    color: #000;
+    line-height: 1;
+    font-size: 1rem;
+    -ms-text-size-adjust: 100%;
+    -moz-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.row {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    align-content: center;
+    justify-content: space-between;
+    height: max-content;
+}
+
+.left-col,
+.center-col {
+    width: 50%;
+    margin: 10px;
+    border: 2px solid whitesmoke;
+    border-radius: 10px;
+    cursor: default;
+}
+
+.col-name {
+    padding: 10px;
+    text-align: center;
+    color: whitesmoke;
+    text-decoration: underline;
+    font-size: 20px;
+}
+
+.category-list,
+.product-list {
+    height: auto;
+    padding: 5px;
+    margin: 5px;
+    font-size: 20px;
+    /*text-align: center;*/
+    color: dodgerblue;
+    list-style-type: none;
+    /*border: 2px solid whitesmoke;*/
+    border-radius: 10px;
+}
+
+.titleSpan:hover,
+.titleSpan:hover {
+    color: blue;
+    font-weight: 700;
+    font-size: 21px;
+    /*padding-right: 5px;*/
+    /*padding: 5px;*/
+    margin: 5px;
+    list-style-type: none;
+
+}
+
+li {
+    padding: 10px;
+    margin-top: 20px;
+    border: 2px solid whitesmoke;
+    border-radius: 10px;
+}
+
+.btnDelete {
+    color: black;
+    float: right;
+}
+.btnDelete:hover {
+    float: right;
+    background-color: red;
+}
+
+.btnBuy {
+    color: black;
+    float: right;
+}
+.btnBuy:hover {
+    float: right;
+    background-color: red;
+}
+
+.order {
+    height: 500px;
+    width: 50%;
+    margin: 10px;
+    border: 2px solid whitesmoke;
+    border-radius: 10px;
+    cursor: default;
+}
+
+.profile {
+    height: 500px;
+    width: 50%;
+    margin: 10px;
+    border: 2px solid whitesmoke;
+    border-radius: 10px;
+    cursor: default;
+}
+
+label {
+    color: white;
+    padding: 8px;
+}
+input {
+    /*width: auto;*/
+    font-size: inherit;
+}
+
+.btnAdd, .btnDelete, .btnBuy {
+    display: -webkit-inline-box;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    padding: 0px 12.15px;
+    height: 1.580625rem;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    color: #fff;
+    gap: 0.1875rem;
+    font-size: 16px;
+    background: #ff790a;
+    border-radius: 12.1464px;
+    white-space: nowrap;
+    position: relative;
+}
+.btnAdd:hover,
+.btnBuy:hover {
+    background-color: green;
+}
+
+
+.is-active {
+    background: darkgreen;
+    color: whitesmoke;
+
+}
+
+
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+    background-color: darkgreen;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 40%; /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button */
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}

@@ -1,3 +1,7 @@
+body {
+    background-color: darkslategrey;
+}
+
 .row {
     display: flex;
     flex-flow: row nowrap;
@@ -7,10 +11,10 @@
 }
 
 .col {
-    height: 600px;
+    height: 500px;
     width: 33.333%;
     margin: 10px;
-    border: 2px solid blue;
+    border: 2px solid whitesmoke;
     border-radius: 10px;
     cursor: default;
 }
@@ -18,7 +22,7 @@
 .col-name {
     padding: 10px;
     text-align: center;
-    color: blue;
+    color: whitesmoke;
     text-decoration: underline;
 }
 
@@ -28,28 +32,31 @@
     margin: 5px;
     font-size: 20px;
     text-align: center;
-    color: green;
+    color: dodgerblue;
     list-style-type: none;
-    border: 2px solid blue;
+    border: 2px solid whitesmoke;
     border-radius: 10px;
 }
+
 span.name:hover,
 span.category:hover {
-    color: #006f07;
+    color: blue;
     font-weight: 700;
 }
+
 ul {
     display: contents;
     padding-inline-start: 10px;
 }
 
-button {
+.btn {
+    background-color: #0091bf;
     height: auto;
     padding: 5px;
     margin: 5px;
     font-size: 20px;
     text-align: center;
-    color: green;
+    color: whitesmoke;
     list-style-type: none;
     border: 2px solid #ff0000;
     border-radius: 10px;

@@ -41,11 +41,13 @@ function handlerNames() {
     const nameList = document.createElement('ul');
     DivCenter.append(nameList);
     let itemsOfCategory = [];
+
     const categoryName = this.innerHTML;
     for (let i = 0; i < arrOfProducts.length; i++) {
         if (arrOfProducts[i].category === categoryName) {
             itemsOfCategory.push(arrOfProducts[i].name);
-        } else continue;
+        }
+
     }
     itemsOfCategory.forEach(item => {
         const nameCell = document.createElement('li');
@@ -81,6 +83,7 @@ function handlerProducts() {
     })
     const button = document.createElement('button');
     DivRight.append(button);
+    button.className = 'btn';
     button.innerHTML = "Купить";
     button.onclick = function () {
         alert(`Товар "${productName}" был куплен`);
