@@ -47,26 +47,28 @@ function getLiProductItem({title, id, count, price, desc}) {
     return li;
 }
 
-function getLiOrdersList(id, fio, city, adressNp, choosedPayment, count, desc) {
+function getLiOrdersList({productTitle, id, fio, city, adressNp, choosedPayment, count, desc}) {
     const li = document.createElement('li');
-    const spanFio = document.createElement('span');
-    const spanCity = document.createElement('span');
-    const spanAdressNp = document.createElement('span');
-    const spanChoosedPayment = document.createElement('span');
-    const spanCount = document.createElement('span');
-    const spanDesc = document.createElement('span');
+    const pProduct = document.createElement('p');
+    const pFio = document.createElement('p');
+    const pCity = document.createElement('p');
+    const pAdressNp = document.createElement('p');
+    const pChoosedPayment = document.createElement('p');
+    const pCount = document.createElement('p');
+    const pDesc = document.createElement('p');
     const buttonDelete = document.createElement('button');
     li.id = id;
-    spanFio.textContent = 'ФИО: ' + fio;
-    spanCity.textContent = 'Город: ' + city;
-    spanAdressNp.textContent = 'Адресс НП: ' + adressNp;
-    spanChoosedPayment.textContent = 'Метод оплаты: ' + choosedPayment;
-    spanCount.textContent = 'Кол-во: ' + count;
-    spanDesc.textContent = 'Коментарий к заказу: ' + desc;
+    pProduct.textContent = 'Продукт: ' + productTitle;
+    pFio.textContent = 'ФИО: ' + fio;
+    pCity.textContent = 'Город: ' + city;
+    pAdressNp.textContent = 'Адресс НП: ' + adressNp;
+    pChoosedPayment.textContent = 'Метод оплаты: ' + choosedPayment;
+    pCount.textContent = 'Кол-во: ' + count;
+    pDesc.textContent = 'Коментарий к заказу: ' + desc;
     buttonDelete.textContent = 'X';
     buttonDelete.className = 'btnDelete'
     buttonDelete.type = 'button';
-    li.append(id, spanFio, spanCity, spanAdressNp, spanChoosedPayment, spanCount, spanDesc, buttonDelete);
+    li.append(pProduct, pFio, pCity, pAdressNp, pChoosedPayment, pCount, pDesc, buttonDelete);
     return li;
 }
 

@@ -9,7 +9,6 @@ const formAddCategory = document.forms.addNewCategory;
 const formAddProduct = document.forms.addNewProduct;
 const formAddOrder = document.forms.AddNewOrder;
 
-
 formAddCategory.addEventListener("submit", (e) => {
     e.preventDefault();
     const title = formAddCategory.titleNewCategory.value;
@@ -34,19 +33,21 @@ formAddProduct.addEventListener('submit', (e) => {
 
 formAddOrder.addEventListener('submit', (e) => {
     e.preventDefault();
+    const productTitle = formAddOrder.productTitle.value;
     const fio = formAddOrder.fioNewOrder.value;
     const city = formAddOrder.cityNewOrder.value;
     const adressNp = formAddOrder.adressNpNewOrder.value;
     const choosedPayment = formAddOrder.choosedPaymentNewOrder.value;
     const count = formAddOrder.countNewOrder.value;
     const desc = formAddOrder.descNewOrder.value;
+    formAddOrder.productTitle.value = "";
     formAddOrder.fioNewOrder.value = "";
     formAddOrder.cityNewOrder.value = "";
     formAddOrder.adressNpNewOrder.value = "";
     formAddOrder.choosedPaymentNewOrder.value = "";
     formAddOrder.countNewOrder.value = "";
     formAddOrder.descNewOrder.value = "";
-    dataOrdersList.addOrder(fio, city, adressNp, choosedPayment, count, desc);
+    dataOrdersList.addOrder(productTitle, fio, city, adressNp, choosedPayment, count, desc);
     showOrderList(dataOrdersList.getOrders(), ulOrdersList);
 });
 
@@ -108,6 +109,8 @@ ulProductList.addEventListener('click', (e) => {
 
 ulOrdersList.addEventListener('click', (e) => {
     const target = e.target;
+
+
     if (!target.closest('li')) return;
 
     if (target.tagName === 'BUTTON') {
@@ -119,6 +122,11 @@ ulOrdersList.addEventListener('click', (e) => {
         ulProductList.innerHTML = "";
         return;
     }
+
+    const productId = target.dataset.id
+    let productNameEl = productId.querySelector(".product-name");
+    const product = data.getCategoryById(data.idCurrentCategory).find((item) => item.id === +productId);
+    productNameEl.innerHTML = product.title;
 
 });
 

@@ -1,4 +1,3 @@
-
 export const dataOrdersList = {
     initialCount: JSON.parse(localStorage.getItem('ordersCount')) || 0,
     orderLists: JSON.parse(localStorage.getItem('orders')) || [],
@@ -10,11 +9,12 @@ export const dataOrdersList = {
         return this.initialCount;
     },
 
-    addOrder(fio, city, adressNp, choosedPayment, count, desc) {
+    addOrder(productTitle, fio, city, adressNp, choosedPayment, count, desc) {
         if (!fio) return;
         this.orderLists.push(
             {
                 id: this.getNewOrderId(),
+                productTitle,
                 fio,
                 city,
                 adressNp,
