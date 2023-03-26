@@ -9,137 +9,167 @@
 </head>
 <body>
 
-<main>
-    <div id="products">
-        <div class="row">
-            <div class="col left-col">
-                <h2 class="col-name">Категории: </h2>
+<div class="main-container">
+    <header class="block">
+        <ul class="header-menu horizontal-list menu-list">
+            <li id="menu-category-item">
+                <a class="header-menu-tab">
+                    <span class="icon fontawesome-star-empty scnd-font-color">
+
+                    </span>Категорії</a>
+            </li>
+            <li id="menu-order-item">
+                <a class="header-menu-tab">
+                    <span class="icon fontawesome-envelope scnd-font-color">
+
+                    </span>Мої замовлення</a>
+                <a class="header-menu-number">5</a>
+            </li>
+        </ul>
+    </header>
+
+    <div class="left-container container ">
+        <div class="addNewProductUi block categoryAdd-ui hidden">
+            <h2 class="titular">Додати категорію:</h2>
+
+            <div class="input-container">
                 <form action="" name="addNewCategory">
-                    <label>Название категории: </label>
                     <input
                             type="text"
                             name="titleNewCategory"
                             id=""
-                            class="">
+                            class="text-input"
+                            placeholder="Введіть назву категорії..">
                     <button
                             type="submit"
-                            class="btnAdd">
-                        Add new Category
+                            class="btnAdd subscribe button">Додати
                     </button>
                 </form>
-                <ul class="category-list"></ul>
+            </div>
+        </div>
 
-                <h2 class="col-name">Добавление товара: </h2>
+        <div class="menu-box block categoryList-ui hidden">
+            <h2 class="titular">КАТЕГОРІЇ</h2>
+            <ul class="menu-box-menu category-list"></ul>
+        </div>
+
+        <div class="menu-box block order-listUi hidden">
+            <h2 class="titular">Мої замовлення</h2>
+            <ul class="menu-box-menu orders-list">
+            </ul>
+        </div>
+    </div>
+
+    <div class="middle-container container">
+        <div class="weather block clear product-ui hidden">
+            <h2 class="titular">Список товарів</h2>
+            <ul class="next-days product-list"></ul>
+        </div>
+
+        <div class="weather block clear order-itemUi hidden">
+            <h2 class="titular">Деталі замовлення</h2>
+            <ul class="next-days order-item"></ul>
+        </div>
+    </div>
+
+    <div class="right-container container">
+        <div class="addNewProductUi block productAdd-ui hidden">
+            <h2 class="titular">Додати товар:</h2>
+
+            <div class="input-container">
                 <form action="" name="addNewProduct">
-                    <label>Название товара: </label><input
-                        type="text"
-                        name="titleNewProduct"
-                        id=""
-                        class="">
-                    <br>
-                    <label>Кол-во: </label>
+
                     <input
-                            type="number"
+                            type="text"
+                            name="titleNewProduct"
+                            id=""
+                            class=""
+                            placeholder="Назва товару..">
+
+                    <input
+                            type="text"
                             name="countNewProduct"
-                            class="">
-                    <br>
-                    <label>Цена: </label>
+                            class=""
+                            placeholder="Кількість товару..">
+
                     <input
-                            type="number"
+                            type="text"
                             name="priceNewProduct"
-                            class="">
-                    <br>
-                    <label>Описание: </label>
+                            class=""
+                            placeholder="Поточна ціна..">
+
                     <input
                             type="text"
                             name="descNewProduct"
-                            class="">
+                            class=""
+                            placeholder="Опис товару..">
                     <br>
                     <button
                             type="submit"
-                            class="btnAdd">
-                        Add new Product
+                            class="btnAdd subscribe button">
+                        Додати
                     </button>
                 </form>
             </div>
-            <div class="col center-col">
-
-                <h2 class="col-name">Список товаров:</h2>
-                <ul class="product-list">
-
-                </ul>
-            </div>
         </div>
-    </div>
 
-    <div class="orders">
-        <div class="col center-col">
+        <div id="orderModal" class="modal block productOrder-ui hidden">
+            <!-- Modal content -->
+            <div class="modal-content">
 
-            <h2 class="col-name">Список заказов:</h2>
-            <ul class="orders-list">
-
-            </ul>
-
-        </div>
-    </div>
-
-
-    <!-- The Modal -->
-    <div id="orderModal" class="modal">
-        <!-- Modal content -->
-        <div class="modal-content">
-            <span class="close">&times;</span>
-
-            <form name="AddNewOrder">
-                <h2 class="col-name">Форма заказа</h2>
-                <div class="col-name" name="productTitle">Выбранный товар:
-                    <span class="product-name" id="productNameTitle"></span>
-                </div>
-                <div>
-                    <label>ФИО:
-                        <input type="text" name="fioNewOrder" class="form">
-                    </label><br>
-                </div>
-                <div>
-                    <label>Ваш город:
-                        <select type="select" name="cityNewOrder" class="form" required>
-                            <option value="" disabled selected>Выбрать:</option>
-                            <option value="Киев">Киев</option>
-                            <option value="Харьков">Харьков</option>
-                            <option value="Одесса">Одесса</option>
+                <form name="AddNewOrder">
+                    <h2 class="titular">Форма замовлення</h2>
+                    <div class="col-name" name="productTitle">Обраний товар:
+                        <span class="product-name" id="productNameTitle"></span>
+                    </div>
+                    <div class="col-name" name="productPrice">Ціна товару:
+                        <span class="product-price" id="productPriceId"></span>
+                    </div>
+                    <br>
+                    <div>
+                        <input type="text" name="fioNewOrder"
+                               class="form text-input"
+                               placeholder="ПІБ" required>
+                    </div>
+                    <div>
+                        <select type="select" name="cityNewOrder" class="form text-select" required>
+                            <option value="" disabled selected>Оберіть місто:</option>
+                            <option value="Київ">Київ</option>
+                            <option value="Харків">Харків</option>
+                            <option value="Одеса">Одеса</option>
                         </select>
-                    </label><br>
-                </div>
-                <div>
-                    <label>Адресс НП:</label>
-                    <input type="text" name="adressNpNewOrder" class="form"><br>
-                </div>
-                <div>
-                    <input type="radio" id="pay-online"
-                           name="choosedPaymentNewOrder" value="pay-online">
-                    <label for="pay-online">Оплатить онлайн</label>
+                    </div>
+                    <div>
+                        <input type="text" name="adressNpNewOrder" class="form text-input"
+                               placeholder="Адреса НП" required>
+                    </div>
+                    <div>
+                        <input type="radio" id="pay-online"
+                               name="choosedPaymentNewOrder" value="pay-online">
+                        <label for="pay-online">Оплатить онлайн</label>
+                        <br>
+                        <input type="radio" id="pay-after"
+                               name="choosedPaymentNewOrder" value="pay-after">
+                        <label for="pay-after">При получении</label>
+                    </div>
+                    <div>
+                        <input type="text" min="1" name="countNewOrder" class="form text-input"
+                               placeholder="Обрати кількість" required>
+                    </div>
+                    <div>
+                        <textarea name="descNewOrder" rows="8" cols="40" class="form textarea"
+                                  placeholder="Коментар до замовлення"></textarea>
+                    </div>
+                    <button type="submit" class="submit-button">Замовити</button>
+                </form>
 
-                    <input type="radio" id="pay-after"
-                           name="choosedPaymentNewOrder" value="pay-after">
-                    <label for="pay-after">При получении</label>
-                </div>
-                <div>
-                    <label>Выбрать кол-во: </label>
-                    <input type="number" min = "1" name="countNewOrder" class="form"><br>
-                </div>
-                <div>
-                    <label>Комментарий к заказу: </label><br>
-                    <textarea name="descNewOrder" rows="8" cols="40"></textarea>
-                </div>
-                <button type="submit" class="submit-button">Заказать</button>
-            </form>
+            </div>
 
         </div>
-
     </div>
 
+</div>
 
-</main>
 <!--Scripts JS-->
 <script type="module" src="src/app.js"></script>
 </body>

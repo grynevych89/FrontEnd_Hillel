@@ -1,14 +1,47 @@
-import {showCategoryLists, showProductList, toggleClasses, showOrderList} from "./generateHtml.js";
+import {showCategoryLists, showProductList, toggleClasses, showOrderList, showOrdersItem} from "./generateHtml.js";
 import {data} from "./data.js";
 import {dataOrdersList} from "./dataOrders.js";
 
 const ulCategoryList = document.querySelector(".category-list");
 const ulProductList = document.querySelector(".product-list");
 const ulOrdersList = document.querySelector(".orders-list");
+const ulOrdersItem = document.querySelector(".order-item");
+
 const formAddCategory = document.forms.addNewCategory;
 const formAddProduct = document.forms.addNewProduct;
 const formAddOrder = document.forms.AddNewOrder;
+
+const buttonCategory = document.querySelector("#menu-category-item");
+const buttonOrders = document.querySelector("#menu-order-item");
+
+const categoryAddUi = document.querySelector(".categoryAdd-ui");
+const categoryListUi = document.querySelector(".categoryList-ui");
+const productUi = document.querySelector(".product-ui");
+const productAddUi = document.querySelector(".productAdd-ui");
+
+const productOrderUi = document.querySelector(".productOrder-ui");
+const orderListUi = document.querySelector(".order-listUi");
+const orderItemUi = document.querySelector(".order-itemUi");
 let modal = document.getElementById("orderModal");
+
+buttonCategory.addEventListener('click', (e) => {
+    e.preventDefault();
+    categoryAddUi.classList.remove("hidden");
+    categoryListUi.classList.remove("hidden");
+    orderListUi.classList.add("hidden");
+    orderItemUi.classList.add("hidden");
+    productAddUi.classList.add("hidden");
+})
+
+buttonOrders.addEventListener('click', (e) => {
+    e.preventDefault();
+    categoryAddUi.classList.add("hidden");
+    categoryListUi.classList.add("hidden");
+    productUi.classList.add("hidden");
+    productAddUi.classList.add("hidden");
+    productOrderUi.classList.add("hidden");
+    orderListUi.classList.remove("hidden");
+})
 
 formAddCategory.addEventListener("submit", (e) => {
     e.preventDefault();
@@ -35,6 +68,7 @@ formAddProduct.addEventListener('submit', (e) => {
 formAddOrder.addEventListener('submit', (e) => {
     e.preventDefault();
     const productTitle = document.getElementById("productNameTitle").innerHTML;
+    const productPrice = document.getElementById("productPriceId").innerHTML;
     const fio = formAddOrder.fioNewOrder.value;
     const city = formAddOrder.cityNewOrder.value;
     const adressNp = formAddOrder.adressNpNewOrder.value;
@@ -47,8 +81,8 @@ formAddOrder.addEventListener('submit', (e) => {
     formAddOrder.choosedPaymentNewOrder.value = "";
     formAddOrder.countNewOrder.value = "";
     formAddOrder.descNewOrder.value = "";
-    dataOrdersList.addOrder(productTitle, fio, city, adressNp, choosedPayment, count, desc);
-    modal.style.display = "none";
+    dataOrdersList.addOrder(productTitle, productPrice, fio, city, adressNp, choosedPayment, count, desc);
+    productOrderUi.classList.add("hidden");
     showOrderList(dataOrdersList.getOrders(), ulOrdersList);
 });
 
@@ -57,7 +91,7 @@ ulCategoryList.addEventListener('click', (e) => {
     if (!target.closest('li')) return;
 
     if (target.tagName === 'BUTTON') {
-        const isDelete = confirm('Are you sure?');
+        const isDelete = confirm('Ви впевненні?');
         if (!isDelete) return;
 
         data.deleteCategory(e.target.closest('li').id);
@@ -66,10 +100,12 @@ ulCategoryList.addEventListener('click', (e) => {
         return;
     }
 
+    productOrderUi.classList.add("hidden");
+    productUi.classList.remove("hidden");
+    productAddUi.classList.remove("hidden");
+
     data.idCurrentCategory = +e.target.closest('li').id;
-
     showProductList(data.getCategoryById(data.idCurrentCategory), ulProductList);
-
     toggleClasses(target, e.currentTarget, 'is-active')
 });
 
@@ -78,32 +114,23 @@ ulProductList.addEventListener('click', (e) => {
     if (!target.closest('li')) return;
 
     if (target.tagName === 'BUTTON' && target.textContent === 'Delete') {
-        const isDelete = confirm('Are you sure?');
+        const isDelete = confirm('Ви впевненні?');
         if (!isDelete) return;
         data.deleteProduct(e.target.closest('li').id);
     }
 
     if (target.tagName === 'BUTTON' && target.textContent === 'Buy') {
         const productId = target.dataset.id
+        productAddUi.classList.add("hidden");
+        productOrderUi.classList.remove("hidden");
 
-        let productNameEl = modal.querySelector(".product-name");
-        let span = document.getElementsByClassName("close")[0];
-        modal.style.display = "block";
-
-        span.onclick = function () {
-            modal.style.display = "none";
-        }
-        window.onclick = function (event) {
-            if (event.target === modal) {
-                modal.style.display = "none";
-            }
-        }
+        let productEl = modal.querySelector(".product-name");
+        let productPriceEl = modal.querySelector(".product-price");
 
         const product = data.getCategoryById(data.idCurrentCategory).find((item) => item.id === +productId);
-        productNameEl.innerHTML = product.title;
+        productEl.innerHTML = product.title;
+        productPriceEl.innerHTML = product.price;
     }
-
-
 
     ulProductList.innerHTML = '';
 
@@ -112,12 +139,10 @@ ulProductList.addEventListener('click', (e) => {
 
 ulOrdersList.addEventListener('click', (e) => {
     const target = e.target;
-
-
     if (!target.closest('li')) return;
 
     if (target.tagName === 'BUTTON') {
-        const isDelete = confirm('Are you sure?');
+        const isDelete = confirm('Ви впевненні?');
         if (!isDelete) return;
 
         dataOrdersList.deleteOrder(e.target.closest('li').id);
@@ -126,11 +151,26 @@ ulOrdersList.addEventListener('click', (e) => {
         return;
     }
 
-    const productId = target.dataset.id
-    let productNameEl = productId.querySelector(".product-name");
-    const product = data.getCategoryById(data.idCurrentCategory).find((item) => item.id === +productId);
-    productNameEl.innerHTML = product.title;
+    dataOrdersList.idCurrentOrder = +e.target.closest('li').id;
+    console.log('target' + target.id)
+    orderItemUi.classList.remove("hidden");
+    showOrdersItem(dataOrdersList.getOrdersById(dataOrdersList.idCurrentOrder), ulOrdersItem);
+    toggleClasses(target, e.currentTarget, 'is-active')
+});
 
+ulOrdersItem.addEventListener('click', (e) => {
+    const target = e.target;
+    if (!target.closest('li')) return;
+
+    if (target.tagName === 'BUTTON' && target.textContent === 'Delete') {
+        const isDelete = confirm('Ви впевненні?');
+        if (!isDelete) return;
+        dataOrdersList.deleteOrder(e.target.closest('li').id);
+    }
+
+    ulOrdersItem.innerHTML = '';
+
+    showOrdersItem(dataOrdersList.getOrdersById(dataOrdersList.idCurrentOrder), ulOrdersItem)
 });
 
 showOrderList(dataOrdersList.getOrders(), ulOrdersList);

@@ -36,7 +36,6 @@ export const data = {
 
     getCategory() {
         return this.lists;
-        // return this.lists.getCategoryById(data.idCurrentCategory);
     },
 
     getCategoryById(id) {
