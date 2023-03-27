@@ -5,70 +5,78 @@ function getLiCategoryItem({title, id}) {
 
     li.id = id;
     span.textContent = title;
-    span.className = 'titleSpan';
+    span.className = 'titleSpan menu-box-tab';
     buttonDelete.textContent = 'X';
-    buttonDelete.className = 'btnDelete'
+    buttonDelete.className = 'btnDelete1 delete button'
     buttonDelete.type = 'button';
 
-    li.append(span);
-    li.append(buttonDelete)
-
+    li.append(span, buttonDelete);
     return li;
 }
 
 function getLiProductItem({title, id, count, price, desc}) {
     const li = document.createElement('li');
     const spanTitle = document.createElement('span');
-    const pCount = document.createElement('p');
-    const pPrice = document.createElement('p');
-    const pDesc = document.createElement('p');
     const buttonDelete = document.createElement('button');
     const buttonBuy = document.createElement('button');
 
     li.id = id;
-    spanTitle.innerText = 'Название: ' + title;
+    spanTitle.innerText = `Назва: ${title}
+    Кількість: ${count}
+    Ціна: ${price}
+    Опис: ${desc}`;
     spanTitle.className = 'titleSpan';
-    pCount.textContent = 'Кол-во: ' + count;
-    pPrice.textContent = 'Цена: ' + price;
-    pDesc.textContent = 'Описание: ' + desc;
-
-    buttonDelete.textContent = 'Delete';
-    buttonDelete.className = 'btnDelete'
-    buttonDelete.type = 'button';
 
     buttonBuy.textContent = 'Buy';
-    buttonBuy.className = 'btnBuy'
+    buttonBuy.className = 'btnBuy button'
     buttonBuy.id = 'buy'
     buttonBuy.type = 'button'
     buttonBuy.dataset.id = id
 
-    li.append(spanTitle, pCount, pPrice, pDesc, buttonDelete, buttonBuy);
+    buttonDelete.textContent = 'Delete';
+    buttonDelete.className = 'btnDelete2'
+    buttonDelete.type = 'button';
+
+    li.append(spanTitle, buttonBuy, buttonDelete);
 
     return li;
 }
 
-function getLiOrdersList({productTitle, id, fio, city, adressNp, choosedPayment, count, desc}) {
+function getLiOrdersList({date, price, id}) {
     const li = document.createElement('li');
-    const pProduct = document.createElement('p');
-    const pFio = document.createElement('p');
-    const pCity = document.createElement('p');
-    const pAdressNp = document.createElement('p');
-    const pChoosedPayment = document.createElement('p');
-    const pCount = document.createElement('p');
-    const pDesc = document.createElement('p');
+    const spanInfo = document.createElement('span');
+
     const buttonDelete = document.createElement('button');
     li.id = id;
-    pProduct.textContent = 'Продукт: ' + productTitle;
-    pFio.textContent = 'ФИО: ' + fio;
-    pCity.textContent = 'Город: ' + city;
-    pAdressNp.textContent = 'Адресс НП: ' + adressNp;
-    pChoosedPayment.textContent = 'Метод оплаты: ' + choosedPayment;
-    pCount.textContent = 'Кол-во: ' + count;
-    pDesc.textContent = 'Коментарий к заказу: ' + desc;
+    spanInfo.className = 'titleSpan menu-box-tab';
+    spanInfo.textContent =
+        `Дата: ${date}
+        Ціна: ${price}`;
+
     buttonDelete.textContent = 'X';
-    buttonDelete.className = 'btnDelete'
+    buttonDelete.className = 'btnDelete1 delete button'
     buttonDelete.type = 'button';
-    li.append(pProduct, pFio, pCity, pAdressNp, pChoosedPayment, pCount, pDesc, buttonDelete);
+    li.append(spanInfo, buttonDelete);
+    return li;
+}
+
+function getLiOrdersItems({productTitle, date, id, fio, city, adressNp, choosedPayment, count, price, desc}) {
+    const li = document.createElement('li');
+    const spanProduct = document.createElement('span');
+
+    li.id = id;
+    spanProduct.className = 'titleSpan'
+    spanProduct.innerText = `Продукт: ${productTitle}
+    Дата замовлення: ${date}
+    ПІБ: ${fio}
+    Місто: ${city}
+    Адреса НП: ${adressNp}
+    Спосіб оплати: ${choosedPayment}
+    Кількість: ${count}
+    Ціна: ${price}
+    Коментар до замовлення: ${desc}`
+
+    li.append(spanProduct);
     return li;
 }
 
@@ -102,6 +110,11 @@ export function showOrderList(list, el) {
 
     el.innerHTML = "";
     el.append(fragment);
+}
+
+export function showOrdersItem(item, el) {
+    el.innerHTML = '';
+    el.append(getLiOrdersItems(item));
 }
 
 export function toggleClasses(target, currentTarget, classes) {

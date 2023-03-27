@@ -1,3 +1,4 @@
+
 export const dataOrdersList = {
     initialCount: JSON.parse(localStorage.getItem('ordersCount')) || 0,
     orderLists: JSON.parse(localStorage.getItem('orders')) || [],
@@ -9,12 +10,18 @@ export const dataOrdersList = {
         return this.initialCount;
     },
 
-    addOrder(productTitle, fio, city, adressNp, choosedPayment, count, desc) {
+    addOrder(productTitle, price, fio, city, adressNp, choosedPayment, count, desc) {
+        const date = new Date();
+        let day = date.getDate();
+        let month = date.getMonth() + 1;
+        let year = date.getFullYear();
         if (!fio) return;
         this.orderLists.push(
             {
                 id: this.getNewOrderId(),
+                date: `${day}-${month}-${year}`,
                 productTitle,
+                price,
                 fio,
                 city,
                 adressNp,
@@ -35,7 +42,7 @@ export const dataOrdersList = {
     },
 
     getOrdersById(id) {
-        return this.orderLists.find((i) => i.id === +id);
+        return this.orderLists.find((item) => item.id === +id);
     },
 
     saveInLocalStorage() {
