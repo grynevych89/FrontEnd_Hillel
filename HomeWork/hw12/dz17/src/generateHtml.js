@@ -63,7 +63,6 @@ function getLiOrdersList({date, price, id}) {
 function getLiOrdersItems({productTitle, date, id, fio, city, adressNp, choosedPayment, count, price, desc}) {
     const li = document.createElement('li');
     const spanProduct = document.createElement('span');
-    const buttonDelete = document.createElement('button');
 
     li.id = id;
     spanProduct.className = 'titleSpan'
@@ -77,10 +76,7 @@ function getLiOrdersItems({productTitle, date, id, fio, city, adressNp, choosedP
     Ціна: ${price}
     Коментар до замовлення: ${desc}`
 
-    buttonDelete.textContent = 'X';
-    buttonDelete.className = 'btnDelete3 delete button'
-    buttonDelete.type = 'button';
-    li.append(spanProduct, buttonDelete);
+    li.append(spanProduct);
     return li;
 }
 
@@ -116,14 +112,9 @@ export function showOrderList(list, el) {
     el.append(fragment);
 }
 
-export function showOrdersItem(list, el) {
-    const fragment = new DocumentFragment();
-
-    list.forEach((items) => {
-        fragment.append(getLiOrdersItems(items));
-    });
+export function showOrdersItem(item, el) {
     el.innerHTML = '';
-    el.append(fragment);
+    el.append(getLiOrdersItems(item));
 }
 
 export function toggleClasses(target, currentTarget, classes) {

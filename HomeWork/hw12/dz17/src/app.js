@@ -153,23 +153,10 @@ ulOrdersList.addEventListener('click', (e) => {
 
     dataOrdersList.idCurrentOrder = +e.target.closest('li').id;
     orderItemUi.classList.remove("hidden");
+    // console.log(dataOrdersList.getOrdersById(dataOrdersList.idCurrentOrder))
     showOrdersItem(dataOrdersList.getOrdersById(dataOrdersList.idCurrentOrder), ulOrdersItem);
+
     toggleClasses(target, e.currentTarget, 'is-active')
-});
-
-ulOrdersItem.addEventListener('click', (e) => {
-    const target = e.target;
-    if (!target.closest('li')) return;
-
-    if (target.tagName === 'BUTTON') {
-        const isDelete = confirm('Ви впевненні?');
-        if (!isDelete) return;
-        dataOrdersList.deleteOrder(e.target.closest('li').id);
-    }
-
-    ulOrdersItem.innerHTML = '';
-
-    // showOrdersItem(dataOrdersList.getOrdersById(dataOrdersList.idCurrentOrder), ulOrdersItem)
 });
 
 showOrderList(dataOrdersList.orderLists, ulOrdersList);

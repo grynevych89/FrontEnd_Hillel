@@ -42,7 +42,7 @@ export const dataOrdersList = {
     },
 
     getOrdersById(id) {
-        return this.orderLists = this.orderLists.find((item) => item.id !== +id);
+        return this.orderLists.find((item) => item.id === +id);
     },
 
     saveInLocalStorage() {
