@@ -108,6 +108,12 @@ input[type=text]{
     border: solid 1px #1f253d;
     border-radius: 5px;
 }
+input[type=radio]{
+    width: 12px;
+    height: 20px;
+    margin-bottom: 10px;
+    color: #fff;
+}
 .text-select{
     width: 260px;
     height: 50px;
@@ -1126,11 +1132,34 @@ END LINE-CHART by @kseso https://codepen.io/Kseso/pen/phiyL
     border-radius: 100%;
 }
 
-.btnDelete{
+.btnDelete1 {
     position: absolute;
     right: 5px;
-    top: 20px;
-
+    top: 15px;
+}
+.btnDelete2 {
+    margin: 10px;
+    color: #fff;
+    height: 40px;
+    width: 80px;
+    line-height: 26px;
+    background: #e64c65;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 10px;
+    margin-inline-start: 10px;
+}
+.btnDelete3 {
+    margin: 10px;
+    color: #fff;
+    height: 40px;
+    width: 80px;
+    line-height: 26px;
+    background: #e64c65;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 10px;
+    margin-inline-start: 10px;
 }
 
 .hidden {
@@ -1140,7 +1169,7 @@ END LINE-CHART by @kseso https://codepen.io/Kseso/pen/phiyL
 
 ul.product-list li {
     display: block;
-    line-height: 58px;
+    /*line-height: 58px;*/
     border-bottom: 1px solid #1f253d;
     -webkit-transition: background .3s;
     transition: background .3s;
@@ -1148,4 +1177,10 @@ ul.product-list li {
 
 ul.product-list li:hover {
     background: #50597b;
+}
+
+.error-message {
+    height: 20px;
+    /*visibility: hidden;*/
+    color: red;
 }

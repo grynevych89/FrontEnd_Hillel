@@ -23,7 +23,7 @@
                     <span class="icon fontawesome-envelope scnd-font-color">
 
                     </span>Мої замовлення</a>
-                <a class="header-menu-number">5</a>
+<!--                <a class="header-menu-number">5</a>-->
             </li>
         </ul>
     </header>
@@ -121,15 +121,18 @@
                     <h2 class="titular">Форма замовлення</h2>
                     <div class="col-name" name="productTitle">Обраний товар:
                         <span class="product-name" id="productNameTitle"></span>
+                        <span class="error-message"></span>
                     </div>
                     <div class="col-name" name="productPrice">Ціна товару:
                         <span class="product-price" id="productPriceId"></span>
+                        <span class="error-message"></span>
                     </div>
                     <br>
                     <div>
                         <input type="text" name="fioNewOrder"
                                class="form text-input"
                                placeholder="ПІБ" required>
+                        <span class="error-message"></span>
                     </div>
                     <div>
                         <select type="select" name="cityNewOrder" class="form text-select" required>
@@ -138,29 +141,34 @@
                             <option value="Харків">Харків</option>
                             <option value="Одеса">Одеса</option>
                         </select>
+                        <span class="error-message"></span>
                     </div>
                     <div>
                         <input type="text" name="adressNpNewOrder" class="form text-input"
                                placeholder="Адреса НП" required>
+                        <span class="error-message"></span>
                     </div>
                     <div>
                         <input type="radio" id="pay-online"
                                name="choosedPaymentNewOrder" value="pay-online">
-                        <label for="pay-online">Оплатить онлайн</label>
+                        <label for="pay-online">Сплатити онлайн</label>
                         <br>
                         <input type="radio" id="pay-after"
                                name="choosedPaymentNewOrder" value="pay-after">
-                        <label for="pay-after">При получении</label>
+                        <label for="pay-after">При отриманні</label>
+                        <span class="error-message"></span>
                     </div>
                     <div>
                         <input type="text" min="1" name="countNewOrder" class="form text-input"
                                placeholder="Обрати кількість" required>
+                        <span class="error-message"></span>
                     </div>
                     <div>
                         <textarea name="descNewOrder" rows="8" cols="40" class="form textarea"
                                   placeholder="Коментар до замовлення"></textarea>
                     </div>
-                    <button type="submit" class="submit-button">Замовити</button>
+                    <span class="error-message"></span>
+                    <button type="submit" class="submit-button subscribe button">Замовити</button>
                 </form>
 
             </div>

@@ -7,7 +7,7 @@ function getLiCategoryItem({title, id}) {
     span.textContent = title;
     span.className = 'titleSpan menu-box-tab';
     buttonDelete.textContent = 'X';
-    buttonDelete.className = 'btnDelete delete button'
+    buttonDelete.className = 'btnDelete1 delete button'
     buttonDelete.type = 'button';
 
     li.append(span, buttonDelete);
@@ -17,18 +17,15 @@ function getLiCategoryItem({title, id}) {
 function getLiProductItem({title, id, count, price, desc}) {
     const li = document.createElement('li');
     const spanTitle = document.createElement('span');
-    const pCount = document.createElement('p');
-    const pPrice = document.createElement('p');
-    const pDesc = document.createElement('p');
     const buttonDelete = document.createElement('button');
     const buttonBuy = document.createElement('button');
 
     li.id = id;
-    spanTitle.innerText = 'Назва: ' + title;
+    spanTitle.innerText = `Назва: ${title}
+    Кількість: ${count}
+    Ціна: ${price}
+    Опис: ${desc}`;
     spanTitle.className = 'titleSpan';
-    pCount.textContent = 'Кількість: ' + count;
-    pPrice.textContent = 'Ціна: ' + price;
-    pDesc.textContent = 'Опис: ' + desc;
 
     buttonBuy.textContent = 'Buy';
     buttonBuy.className = 'btnBuy button'
@@ -37,10 +34,10 @@ function getLiProductItem({title, id, count, price, desc}) {
     buttonBuy.dataset.id = id
 
     buttonDelete.textContent = 'Delete';
-    buttonDelete.className = 'btnDelete delete button'
+    buttonDelete.className = 'btnDelete2'
     buttonDelete.type = 'button';
 
-    li.append(spanTitle, pCount, pPrice, pDesc, buttonBuy, buttonDelete);
+    li.append(spanTitle, buttonBuy, buttonDelete);
 
     return li;
 }
@@ -57,7 +54,7 @@ function getLiOrdersList({date, price, id}) {
         Ціна: ${price}`;
 
     buttonDelete.textContent = 'X';
-    buttonDelete.className = 'btnDelete'
+    buttonDelete.className = 'btnDelete1 delete button'
     buttonDelete.type = 'button';
     li.append(spanInfo, buttonDelete);
     return li;
@@ -65,32 +62,25 @@ function getLiOrdersList({date, price, id}) {
 
 function getLiOrdersItems({productTitle, date, id, fio, city, adressNp, choosedPayment, count, price, desc}) {
     const li = document.createElement('li');
-    const pProduct = document.createElement('p');
-    const pDate = document.createElement('p');
-    const pFio = document.createElement('p');
-    const pCity = document.createElement('p');
-    const pAdressNp = document.createElement('p');
-    const pChoosedPayment = document.createElement('p');
-    const pCount = document.createElement('p');
-    const pPrice = document.createElement('p');
-    const pDesc = document.createElement('p');
+    const spanProduct = document.createElement('span');
     const buttonDelete = document.createElement('button');
 
     li.id = id;
-    pProduct.textContent = 'Продукт: ' + productTitle;
-    pDate.textContent = 'Дата замовлення: ' + date;
-    pFio.textContent = 'ПІБ: ' + fio;
-    pCity.textContent = 'Місто: ' + city;
-    pAdressNp.textContent = 'Адреса НП: ' + adressNp;
-    pChoosedPayment.textContent = 'Спосіб оплати: ' + choosedPayment;
-    pCount.textContent = 'Кількість: ' + count;
-    pPrice.textContent = 'Ціна: ' + price;
-    pDesc.textContent = 'Коментар до замовлення: ' + desc;
+    spanProduct.className = 'titleSpan'
+    spanProduct.innerText = `Продукт: ${productTitle}
+    Дата замовлення: ${date}
+    ПІБ: ${fio}
+    Місто: ${city}
+    Адреса НП: ${adressNp}
+    Спосіб оплати: ${choosedPayment}
+    Кількість: ${count}
+    Ціна: ${price}
+    Коментар до замовлення: ${desc}`
 
     buttonDelete.textContent = 'X';
-    buttonDelete.className = 'btnDelete'
+    buttonDelete.className = 'btnDelete3 delete button'
     buttonDelete.type = 'button';
-    li.append(pProduct, pDate, pFio, pCity, pAdressNp, pChoosedPayment, pCount, pDesc, buttonDelete);
+    li.append(spanProduct, buttonDelete);
     return li;
 }
 
