@@ -1,6 +1,7 @@
 import {showCategoryLists, showProductList, toggleClasses, showOrderList, showOrdersItem} from "./generateHtml.js";
 import {data} from "./data.js";
 import {dataOrdersList} from "./dataOrders.js";
+import { isValid } from "./validate.js";
 
 const ulCategoryList = document.querySelector(".category-list");
 const ulProductList = document.querySelector(".product-list");
@@ -65,11 +66,14 @@ formAddProduct.addEventListener('submit', (e) => {
     showProductList(data.getCategoryById(data.idCurrentCategory), ulProductList);
 });
 
+isValid()
 formAddOrder.addEventListener('submit', (e) => {
     e.preventDefault();
     const productTitle = document.getElementById("productNameTitle").innerHTML;
     const productPrice = document.getElementById("productPriceId").innerHTML;
     const fio = formAddOrder.fioNewOrder.value;
+    const email = formAddOrder.emailNewOrder.value;
+    const phone = formAddOrder.phoneNewOrder.value;
     const city = formAddOrder.cityNewOrder.value;
     const adressNp = formAddOrder.adressNpNewOrder.value;
     const choosedPayment = formAddOrder.choosedPaymentNewOrder.value;
@@ -81,8 +85,10 @@ formAddOrder.addEventListener('submit', (e) => {
     formAddOrder.choosedPaymentNewOrder.value = "";
     formAddOrder.countNewOrder.value = "";
     formAddOrder.descNewOrder.value = "";
-    dataOrdersList.addOrder(productTitle, productPrice, fio, city, adressNp, choosedPayment, count, desc);
-    productOrderUi.classList.add("hidden");
+    dataOrdersList.addOrder(
+        productTitle, productPrice, fio, email, phone, city, adressNp, choosedPayment, count, desc);
+    formAddOrder.reset()
+    // productOrderUi.classList.add("hidden");
     showOrderList(dataOrdersList.getOrders(), ulOrdersList);
 });
 

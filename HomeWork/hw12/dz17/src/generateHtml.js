@@ -60,7 +60,7 @@ function getLiOrdersList({date, price, id}) {
     return li;
 }
 
-function getLiOrdersItems({productTitle, date, id, fio, city, adressNp, choosedPayment, count, price, desc}) {
+function getLiOrdersItems({productTitle, date, id, fio, email, phone, city, adressNp, choosedPayment, count, price, desc}) {
     const li = document.createElement('li');
     const spanProduct = document.createElement('span');
 
@@ -69,6 +69,8 @@ function getLiOrdersItems({productTitle, date, id, fio, city, adressNp, choosedP
     spanProduct.innerText = `Продукт: ${productTitle}
     Дата замовлення: ${date}
     ПІБ: ${fio}
+    Email: ${email}
+    Телефон: ${phone}
     Місто: ${city}
     Адреса НП: ${adressNp}
     Спосіб оплати: ${choosedPayment}

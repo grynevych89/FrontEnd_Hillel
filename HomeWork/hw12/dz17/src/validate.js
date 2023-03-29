@@ -1,4 +1,4 @@
-function init() {
+export function isValid() {
     document.AddNewOrder.addEventListener('submit', function (event) {
         console.log(this.elements);
         console.log([...this.elements]);
@@ -7,28 +7,37 @@ function init() {
 
         [...this.elements]
             .filter(element => element.type !== 'submit')
-            .forEach(isValid)
+            .forEach(validateElement)
     })
 
     const inputs = document.querySelectorAll('input, textarea');
 
     inputs.forEach(input => {
         input.addEventListener('blur', function () {
-            isValid(this)
+            validateElement(this)
         });
     })
 }
 
-export function isValid(element) {
+function validateElement(element) {
     const errorElement = element.nextElementSibling;
     if (!errorElement || !errorElement.classList.contains('error-message')) {
         return;
     }
 
     if (element.hasAttribute('required') && element.value.trim() === '') {
-        errorElement.innerHTML = 'Це поле не може бути пустим..';
-    } else if (element.type === 'email' && !/^\S+@\S+\.\S+$/.test(element.value)) {
-        errorElement.innerHTML = 'Please enter valid email';
+        errorElement.innerHTML = '<br> Не може бути пустим..';
+    } else if (element.type === 'text'
+        && element.name === 'fioNewOrder'
+        && /[^А-Яа-яЁё ]/g
+        .test(element.value)) {
+        errorElement.innerHTML = 'Введіть ПІБ правильно..';
+    } else if (element.type === 'email' && !/^\S+@\S+\.\S+$/
+        .test(element.value)) {
+        errorElement.innerHTML = 'Введіть Email правильно..';
+    } else if (element.type === 'tel' && /^(\+38)?0[0-9]{9}$/
+        .test(element.value)) {
+        errorElement.innerHTML = 'Введіть номер правильно..';
     } else {
         errorElement.innerHTML = '';
     }
