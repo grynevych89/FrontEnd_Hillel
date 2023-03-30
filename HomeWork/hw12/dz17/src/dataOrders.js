@@ -10,7 +10,7 @@ export const dataOrdersList = {
         return this.initialCount;
     },
 
-    addOrder(productTitle, price, fio, city, adressNp, choosedPayment, count, desc) {
+    addOrder(productTitle, price, fio, email, phone, city, adressNp, choosedPayment, count, desc) {
         const date = new Date();
         let day = date.getDate();
         let month = date.getMonth() + 1;
@@ -23,6 +23,8 @@ export const dataOrdersList = {
                 productTitle,
                 price,
                 fio,
+                email,
+                phone,
                 city,
                 adressNp,
                 choosedPayment,

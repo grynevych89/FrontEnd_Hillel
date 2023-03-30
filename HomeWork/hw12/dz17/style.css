@@ -108,6 +108,25 @@ input[type=text]{
     border: solid 1px #1f253d;
     border-radius: 5px;
 }
+input[type=email]{
+    width: 260px;
+    height: 50px;
+    margin-bottom: 20px;
+    padding-left: 45px;
+    background: #50597b;
+    color: #fff;
+    border: solid 1px #1f253d;
+    border-radius: 5px;
+}input[type=tel]{
+    width: 260px;
+    height: 50px;
+    margin-bottom: 20px;
+    padding-left: 45px;
+    background: #50597b;
+    color: #fff;
+    border: solid 1px #1f253d;
+    border-radius: 5px;
+}
 input[type=radio]{
     width: 12px;
     height: 20px;
@@ -144,6 +163,40 @@ input[type=text]::-moz-input-placeholder { /* Mozilla Firefox 19+ */
     color: #fff;
 }
 input[type=text]:-ms-input-placeholder { /* Internet Explorer 10+ */
+    color: #fff;
+}
+input[type=text]:focus {
+    outline: none; /* removes the default orange border when focus */
+    border: 1px solid #11a8ab;
+}
+
+input[type=email]::-webkit-input-placeholder { /* WebKit browsers */
+    color: #fff;
+}
+input[type=email]:-moz-input-placeholder { /* Mozilla Firefox 4 to 18 */
+    color: #fff;
+}
+input[type=email]::-moz-input-placeholder { /* Mozilla Firefox 19+ */
+    color: #fff;
+}
+input[type=email]:-ms-input-placeholder { /* Internet Explorer 10+ */
+    color: #fff;
+}
+input[type=text]:focus {
+    outline: none; /* removes the default orange border when focus */
+    border: 1px solid #11a8ab;
+}
+
+input[type=tel]::-webkit-input-placeholder { /* WebKit browsers */
+    color: #fff;
+}
+input[type=tel]:-moz-input-placeholder { /* Mozilla Firefox 4 to 18 */
+    color: #fff;
+}
+input[type=tel]::-moz-input-placeholder { /* Mozilla Firefox 19+ */
+    color: #fff;
+}
+input[type=tel]:-ms-input-placeholder { /* Internet Explorer 10+ */
     color: #fff;
 }
 input[type=text]:focus {
@@ -1180,7 +1233,6 @@ ul.product-list li:hover {
 }
 
 .error-message {
-    height: 20px;
     /*visibility: hidden;*/
     color: red;
 }

@@ -135,6 +135,18 @@
                         <span class="error-message"></span>
                     </div>
                     <div>
+                        <input type="email" name="emailNewOrder"
+                               class="form text-input"'
+                               placeholder="Email">
+                        <span class="error-message"></span>
+                    </div>
+                    <div>
+                        <input type="tel" name="phoneNewOrder"
+                               class="form text-input"
+                               placeholder="380991112233">
+                        <span class="error-message"></span>
+                    </div>
+                    <div>
                         <select type="select" name="cityNewOrder" class="form text-select" required>
                             <option value="" disabled selected>Оберіть місто:</option>
                             <option value="Київ">Київ</option>
@@ -161,6 +173,7 @@
                     <div>
                         <input type="text" min="1" name="countNewOrder" class="form text-input"
                                placeholder="Обрати кількість" required>
+                        <br>
                         <span class="error-message"></span>
                     </div>
                     <div>
@@ -168,6 +181,8 @@
                                   placeholder="Коментар до замовлення"></textarea>
                     </div>
                     <span class="error-message"></span>
+                    <span class="status-message"></span>
+                    <span class="message"></span>
                     <button type="submit" class="submit-button subscribe button">Замовити</button>
                 </form>
 
