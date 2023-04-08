@@ -38,3 +38,6 @@ Makefile
 
 doc-dev
 
+/node_modules
+package.json
+package-lock.json
