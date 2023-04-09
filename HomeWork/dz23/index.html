@@ -7,11 +7,20 @@
     <title>Grynevych</title>
     <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.css">
     <link rel="shortcut icon" href="">
-    
+
 </head>
 <body>
 
+<div id="container" class="col-2">
 
+    <div id="weather_loc" class="col-12 m-2">
+        <form action="/" method="POST" class="input-group mb-4">
+            <input id="weather_input" class="form-control rounded-left" type="text" name="city" placeholder="Enter City">
+            <input type="submit" class="btn btn-success btn-sm rs" value="Search Weather">
+            <input type="reset" class="btn btn-danger btn-sm" value="Clear">
+        </form>
+    </div>
+</div>
 
     <script src="../../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="../../node_modules/jquery/dist/jquery.js"></script>
