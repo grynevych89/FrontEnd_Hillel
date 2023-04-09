@@ -1,0 +1,23 @@
+{
+  "name": "frontend_hillel",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/grynevych89/FrontEnd_Hillel.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/grynevych89/FrontEnd_Hillel/issues"
+  },
+  "homepage": "https://github.com/grynevych89/FrontEnd_Hillel#readme",
+  "dependencies": {
+    "bootstrap": "^5.2.3",
+    "jquery": "^3.6.4"
+  }
+}
