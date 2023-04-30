@@ -38,3 +38,4 @@ Makefile
 
 doc-dev
 
+/node_modules
