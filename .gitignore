@@ -39,3 +39,4 @@ Makefile
 doc-dev
 
 /node_modules
+gulpfile.js
