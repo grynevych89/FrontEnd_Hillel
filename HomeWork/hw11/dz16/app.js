@@ -60,7 +60,7 @@ function handlerNames() {
 
 function handlerProducts() {
     DivRight.querySelector('ul')?.remove();
-    DivRight.querySelector('button')?.remove();
+    DivRight.querySelector('Button')?.remove();
     const productList = document.createElement('ul');
     DivRight.append(productList);
     let productInfo = [];
@@ -89,6 +89,6 @@ function handlerProducts() {
         alert(`Товар "${productName}" был куплен`);
         DivCenter.querySelector('ul')?.remove();
         DivRight.querySelector('ul')?.remove();
-        DivRight.querySelector('button')?.remove();
+        DivRight.querySelector('Button')?.remove();
     };
 }

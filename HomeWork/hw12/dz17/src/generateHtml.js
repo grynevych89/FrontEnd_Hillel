@@ -7,7 +7,7 @@ function getLiCategoryItem({title, id}) {
     span.textContent = title;
     span.className = 'titleSpan menu-box-tab';
     buttonDelete.textContent = 'X';
-    buttonDelete.className = 'btnDelete1 delete button'
+    buttonDelete.className = 'btnDelete1 delete Button'
     buttonDelete.type = 'button';
 
     li.append(span, buttonDelete);
@@ -28,7 +28,7 @@ function getLiProductItem({title, id, count, price, desc}) {
     spanTitle.className = 'titleSpan';
 
     buttonBuy.textContent = 'Buy';
-    buttonBuy.className = 'btnBuy button'
+    buttonBuy.className = 'btnBuy Button'
     buttonBuy.id = 'buy'
     buttonBuy.type = 'button'
     buttonBuy.dataset.id = id
@@ -54,7 +54,7 @@ function getLiOrdersList({date, price, id}) {
         Ціна: ${price}`;
 
     buttonDelete.textContent = 'X';
-    buttonDelete.className = 'btnDelete1 delete button'
+    buttonDelete.className = 'btnDelete1 delete Button'
     buttonDelete.type = 'button';
     li.append(spanInfo, buttonDelete);
     return li;

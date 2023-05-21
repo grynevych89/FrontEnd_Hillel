@@ -12,7 +12,7 @@ const outputStyle = {
     'cursor':'pointer'
 };
 
-$('button').click(function () {
+$('Button').click(function () {
     const inputValue = inputElement.val();
     const checkValue = inputValue.trim();
     (checkValue) ? $('<span></span>').css(outputStyle).text(inputValue).appendTo('.output-container').hide().fadeIn(1500) : alert("Введите какой то текст!");
